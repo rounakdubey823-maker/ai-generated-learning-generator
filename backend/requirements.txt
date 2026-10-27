@@ -1,0 +1,39 @@
+# ── Web Framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+
+# ── Data Validation ───────────────────────────────────────────────────────────
+# pydantic 2.10+ uses pydantic-core with PyO3 ≥0.22 → Python 3.13 supported
+pydantic[email]==2.10.3
+pydantic-settings==2.7.0
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.36
+alembic==1.14.0
+greenlet>=3.0.0          # required by SQLAlchemy async on Python 3.13
+asyncpg==0.30.0          # async PostgreSQL driver (Python 3.13 compatible)
+aiosqlite==0.20.0        # async SQLite driver (dev/testing)
+
+# ── Authentication ────────────────────────────────────────────────────────────
+# Note: passlib 1.7.4 is incompatible with bcrypt 4+/5+ (bcrypt removed __about__).
+# We use bcrypt directly in auth.py — passlib dependency removed.
+python-jose[cryptography]==3.3.0
+bcrypt>=4.0.0
+python-multipart==0.0.12
+pypdf==5.1.0                 # PDF text extraction only — never executes file content
+
+# ── HTTP Client ───────────────────────────────────────────────────────────────
+httpx==0.28.1
+
+# ── AI / LLM ──────────────────────────────────────────────────────────────────
+openai==1.57.4
+google-generativeai==0.8.3
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+tenacity==9.0.0          # retry logic for AI calls
+
+# ── Dev / Testing ─────────────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+anyio==4.7.0             # async test backend
